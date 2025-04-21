@@ -1,0 +1,221 @@
+{
+  "name": "The Morlok of Wire-Pot Fountain",
+  "description": "A thrilling adventure through a dark dungeon.",
+  "introduction": "Welcome to the dungeon! Your adventure begins now.",
+  "genre": "Fantasy adventure",
+  "id": "dungeon-crawl-001",
+  "player_attributes": [
+    {
+      "name": "hearts",
+      "description": "Your health points. Lose all hearts to die.",
+      "default_value": 3,
+      "current_value": 3
+    },
+    {
+      "name": "honour",
+      "description": "Your honour points. Lose all honour to be shunned.",
+      "default_value": 3,
+      "current_value": 3
+    },
+    {
+      "name": "gold",
+      "description": "Your gold coins. A simple but effective way of keeping score in life.",
+      "default_value": 0,
+      "current_value": 0
+    }
+  ],
+  "player_inventory": [
+    {
+      "name": "sword",
+      "description": "A blade with which you defend yourself and smite the wicked."
+    }
+  ],
+  "encounters": [
+    {
+      "id": 1,
+      "text": "You are in a dungeon. A goblin stares at you menacingly. Suddenly, the goblin charges toward you, blade drawn.",
+      "choices": [
+        {
+          "text": "Meet the goblin head-on in a fight to the death.",
+          "result": {
+            "text": "You parry the goblin's strike, and cleave it in two, but not before it nicks you with a hidden blade.\n\nLose one heart but gain one honour\nAlso, some swag.",
+            "consequences": [
+              {
+                "type": "hearts",
+                "value": -1
+              },
+              {
+                "type": "honour",
+                "value": 1
+              },
+              {
+                "type": "gold",
+                "value": 10
+              }
+            ],
+            "swag": [
+              {
+                "name": "goblin ear",
+                "description": "A trophy from your first kill."
+              },
+              {
+                "name": "shield",
+                "description": "A rough but effective shield made from a goblin's skin."
+              }
+            ]
+          },
+          "nextEncounterId": 2
+        },
+        {
+          "text": "Do a brave Sir Robin and run away.",
+          "result": {
+            "text": "You sprint towards the nearest exit, outpacing the goblin easily but you shame your ancestors with suddenly soggy underpants. \n\nLose one honour.",
+            "consequences": [
+              {
+                "type": "honour",
+                "value": -1
+              }
+            ]
+          },
+          "nextEncounterId": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "You pass through the exit and run down a corridor. At the end of the corridor, you find two doors and must pass through one of them.",
+      "choices": [
+        {
+          "text": "Go through the right hand door",
+          "result": {
+            "text": "You fall down a ten foot drop on the other side, slightly injuring your ankle. You climb out of the hole and into an open courtyard. \n\nLose one heart.",
+            "consequences": [
+              {
+                "type": "hearts",
+                "value": -1
+              }
+            ]
+          },
+          "nextEncounterId": 3
+        },
+        {
+          "text": "Go through the left hand door",
+          "result": {
+            "text": "The door locks behind you and you are in an open courtyard.",
+            "consequences": []
+          },
+          "nextEncounterId": 3
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "You see a table with food and drink. You are tired, hungry and thirsty.",
+      "choices": [
+        {
+          "text": "Eat, drink and rest",
+          "result": {
+            "text": "You recover from your injuries and you are ready to move to the next room",
+            "consequences": [
+              {
+                "type": "hearts",
+                "value": "full-recovery"
+              }
+            ]
+          },
+          "nextEncounterId": 4
+        },
+        {
+          "text": "Ignore the table of refreshments, fearing poison and move on to the next room",
+          "result": {
+            "text": "Your injuries and fatigue cause you to fall into a bed of hemlock. You die. Horribly. Ouch! \n\nLose all hearts",
+            "consequences": [
+              {
+                "type": "hearts",
+                "value": "die"
+              }
+            ]
+          },
+          "nextEncounterId": 4
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "text": "Somehow, you are now in a beer cellar. Even though you just ate and drank your fill, you are tempted to try the merchandise. The barkeep offers you a beer.",
+      "choices": [
+        {
+          "text": "Accept the offer",
+          "result": {
+            "text": "One beer is one too many and two beers is not enough and you get horribly drunk, in your haze, you stagger off. Did I mention that you're an alcoholic? \n\nLose one heart and one honour",
+            "consequences": [
+              {
+                "type": "hearts",
+                "value": -1
+              },
+              {
+                "type": "honour",
+                "value": -1
+              }
+            ]
+          },
+          "nextEncounterId": 5
+        },
+        {
+          "text": "Politely decline the offer",
+          "result": {
+            "text": "You are filled with pride at your strength of will and chalk up another day of sobriety. Well done, you! \n\nGain one honour.",
+            "consequences": [
+              {
+                "type": "honour",
+                "value": 1
+              }
+            ]
+          },
+          "nextEncounterId": 5
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "text": "You reach a library. You see the librarian, who is an orangutan, hanging around the desk. The librarian says 'OOOK?'",
+      "choices": [
+        {
+          "text": "Assume that the librarian is demanding you return a book that you borrowed last year and beg forgiveness.",
+          "result": {
+            "text": "Your apology is nominally accepted, but there is no excuse for your tardiness and you are fined 10 Ankh-Morpork dollars and you get smacked in the head. \n\nLose one honour and one heart.",
+            "consequences": [
+              {
+                "type": "honour",
+                "value": -1
+              },
+              {
+                "type": "hearts",
+                "value": -1
+              }
+            ]
+          },
+          "nextEncounterId": 6
+        },
+        {
+          "text": "Borrow the book eagerly recommended by the librarian, as this is your first visit and you wish to impress",
+          "result": {
+            "text": "You put the book in your bag and walk towards the exit.\n\nGain one honour",
+            "consequences": [
+              {
+                "type": "honour",
+                "value": 1
+              }
+            ]
+          },
+          "nextEncounterId": 6
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "the-end": true,
+      "text": "Congratulations! You have completed the dungeon crawl. You are now a hero of the realm, or something."
+      }
+  ]
+}

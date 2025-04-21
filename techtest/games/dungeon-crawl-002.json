@@ -1,0 +1,234 @@
+{
+  "name": "Dungeon Crawl",
+  "description": "This is just a work in progress to explore the option of different outcomes depending on inventory items.",
+  "introduction": "Welcome to a wacky adventure. Say it with me: 'Dungeon Crawl!'",
+  "genre": "Fantasy adventure",
+  "id": "dungeon-crawl-002",
+  "player_attributes": [
+    {
+      "name": "hearts",
+      "description": "Your health points. Lose all hearts to die.",
+      "default_value": 3,
+      "current_value": 3
+    },
+    {
+      "name": "honour",
+      "description": "Your honour points. Lose all honour to be shunned.",
+      "default_value": 3,
+      "current_value": 3
+    },
+    {
+      "name": "gold",
+      "description": "Your gold coins. Used to buy items.",
+      "default_value": 0,
+      "current_value": 0
+    }
+  ],
+  "player_inventory": [
+    {
+      "name": "sword",
+      "description": "A blade with which you defend yourself and smite the wicked."
+    }
+  ],
+  "encounters": [
+    {
+      "id": 1,
+      "text": [
+        {
+          "default": {
+            "text": "Default text. Two doors stand before you. One to the East, one to the West."
+          }
+        },
+        {
+          "torch": {
+            "text": "As seen with more light. Two doors stand before you. One to the East with a sign over it saying 'Easy treasure this way', one to the West with a sign that reads 'Maladjusted orc through here'."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "Door to the East",
+          "result": {
+            "text": "You skip through the door without a care in the world. You can almost smell the gold already.",
+            "consequences": [],
+            "swag": []
+          },
+          "nextEncounterId": 2
+        },
+        {
+          "text": "Door to the West",
+          "result": {
+            "text": "After girding your loins appropriately, you step through the door.",
+            "consequences": []
+          },
+          "nextEncounterId": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": [
+        {
+          "default": {
+            "text": "Dimly lit room, rubbish all over the floor, sounds of vermin. What now?"
+          }
+        },
+        {
+          "torch": {
+            "text": "A pile of rubbish, a few coins glinting in the light. Rats scurry around in the darkness. What now?"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "Search the rubbish for this 'easy treasure' you heard about.",
+          "result": {
+            "text": "You retrieve ten gold coins but you also get bitten by a rat.\n\nLose one heart but gain ten gold.",
+            "consequences": [
+              {
+                "type": "hearts",
+                "value": -1
+              },
+              {
+                "type": "gold",
+                "value": 10
+              }
+            ]
+          },
+          "nextEncounterId": 4
+        },
+        {
+          "text": "A few scraps of gold probably aren't worth the risk of plague, rabies or tetanus. Leave the room.",
+          "result": {
+            "text": "With a nagging sense of self-doubt regarding your mettle, you leave the room.\n\nLose one honour.",
+            "consequences": [
+              {
+                "type": "honour",
+                "value": -1
+              }
+            ]
+          },
+          "nextEncounterId": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "text": [
+        {
+          "default": {
+            "text": "A dark shape looms in the shadows. You can hear a low growl as it hefts a mighty mace and releases a bellow of rage as it steps towards you. What now?"
+          }
+        },
+        {
+          "torch": {
+            "text": "An angry orc with a mace. It has murder in its eyes as it bellows a war-cry and steps towards you. What now?"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "Stand and fight",
+          "result": {
+            "text": "You engage the brutish monster and, after a vicious melee you succeed in stabbing it to death. You recognise his weapon as the fabled mace of St Braknar, a mighty weapon in the hands of the pure of heart. Clearly this low-brow creature had no idea of the nature of it.\n\n Lose one heart, gain one honour and you now own a mace.",
+            "consequences": [
+              {
+                "type": "hearts",
+                "value": -1
+              },
+              {
+                "type": "honour",
+                "value": 1
+              }
+            ],
+            "swag": [
+              {
+                "name": "Holy mace",
+                "description": "The fabled mace of St Braknar."
+              }
+            ]
+          },
+          "nextEncounterId": 4
+        },
+        {
+          "text": "Run away",
+          "result": {
+            "text": "You tell yourself that discretion is the better part of valour and you run away. You trip over a rock and fall flat on your face. The orc laughs at you and you feel humiliated.\n\nLose one honour.",
+            "consequences": [
+              {
+                "type": "honour",
+                "value": -1
+              }
+            ]
+          },
+          "nextEncounterId": 4
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "text": [
+        {
+          "default": {
+            "text": "You enter into a dusty tomb, dark and silent figures loom in the shadows. You can hear the sound of bone scraping against metal as they turn to face you. What now?"
+          }
+        },
+        {
+          "torch": {
+            "text": "A dusty tomb, dark and silent amoured figures stand at the far end. As they turn to face you, you see they are long-dead warriors animated by dark magic. They draw their weapons. What now?"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "text": "Stand and fight",
+          "result": {
+            "default": {
+              "text": "",
+              "consequences": [
+                {
+                  "type": "hearts",
+                  "value": -2
+                },
+                {
+                  "type": "honour",
+                  "value": 1
+                }
+              ]
+            },
+            "Holy mace": {
+              "text": "You swing the mace of St Braknar at the undead warriors and they fall before you. You feel a surge of power as you vanquish them. You gain one honour.",
+              "consequences": [
+                {
+                  "type": "honour",
+                  "value": 1
+                }
+              ],
+              "swag": [
+                {
+                  "name": "gems",
+                  "description": "Seven rubies."
+                }
+              ]
+            }
+          },
+          "nextEncounterId": 2
+        },
+        {
+          "text": "Run away",
+          "result": {
+            "text": "After girding your loins appropriately, you step through the door.",
+            "consequences": []
+          },
+          "nextEncounterId": 3
+        }
+      ]
+    },
+    {
+      "id": "x",
+      "the-end": true,
+      "text": "You reach the final room of the dungeon. Congratulations, you have completed the game!",
+      "choices": []
+    }
+  ]
+}
