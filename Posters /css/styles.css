@@ -1,0 +1,108 @@
+body {
+    background-color: #ffffff;
+    font-family: Arial, helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.stripe-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #035494;
+  display: flex;
+}
+
+.stripe {
+  height: 100%;
+  display: flex;
+}
+
+.stripe1 {
+  background-color: #F4C324;
+  width: 5rem;
+}
+
+.stripe2 {
+  background-color: #3E530B;
+  width: 45rem;
+}
+
+.stripe3 {
+  background-color: #035494;
+  width: auto;
+}
+
+.text-container {
+  position: absolute;
+  bottom: 0;
+  left: 5rem;
+  width: 80%;
+  z-index: 1;
+}
+
+.text-container .text-row {
+  display: flex;
+}
+
+.text-container .text-row.bottom-gap-big {
+  margin-bottom: 5rem;
+}
+
+.text-container .text-row.bottom-gap-medium {
+  margin-bottom: 3rem;
+}
+
+.text-container .text-row.bottom-gap-small {
+  margin-bottom: 0.5rem;
+}
+
+.text-row .big-text {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.text-row .small-text {
+  font-size: 1rem;
+}
+.text-row .small-text p {
+  margin: 0 0 0.3rem 0;
+}
+.text-row .col2 .small-text {
+  text-align: right;
+}
+
+.text-row .footnote-text {
+  font-size: 0.7rem;
+}
+
+.text-container .col2 {
+  width: 45rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.text-container .col3 {
+  margin-left: 1rem;
+}
+
+.text-container .part1 {
+  flex: 0 0 60%;
+}
+
+.text-container .part1 > div {
+  padding-left: 1rem;
+}
+
+.text-container .part2 {
+  flex: 0 0 40%;
+}
+
+.text-container .part2 > div {
+  padding-right: 1rem;
+}
